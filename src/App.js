@@ -1,23 +1,23 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
+import "./App.css";
+import Card from "./Components/Card/Card";
+
+const initialItems = [
+  { title: "Tamal Verde", body: "Tamal en hoja verde", price: 20 },
+  { title: "Tamal Rojo", body: "Tamal en hoja rojo", price: 20 },
+  { title: "Tamal Mole", body: "Tamal en hoja mole", price: 20 },
+  { title: "Tamal Rajas", body: "Tamal en hoja rajas", price: 20 },
+  { title: "Tamal Dulce", body: "Tamal en hoja dulce", price: 20 },
+];
 
 function App() {
+  const [items] = useState(initialItems);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {items.map(({ title, body, price }) => (
+        <Card key={title} title={title} body={body} price={price} />
+      ))}
     </div>
   );
 }
